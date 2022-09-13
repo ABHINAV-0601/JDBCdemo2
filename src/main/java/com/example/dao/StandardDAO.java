@@ -18,22 +18,24 @@ public class StandardDAO {
         // read about prepared statements
         String sql = "Insert into class_tbl (class_name, section) values(?,?)";
         // ? is placeholder, it has an index, starting form 1
+        /*PreparedStatement preparedStatement = connection.prepareStatement
+                (sql, Statement.RETURN_GENERATED_KEYS);*/
         PreparedStatement preparedStatement = connection.prepareStatement
-                (sql, Statement.RETURN_GENERATED_KEYS);
+                (sql);
         //set the values for placeholders
         //setter provided by prepared statement, using the type of data and index
         preparedStatement.setString(1, standard.getStandard());
         preparedStatement.setString(2,standard.getSection());
         rows = preparedStatement.executeUpdate();
-        int generatedId = 0;
+        /*int generatedId = 0;
         if(rows == 1){
             //get generated id
             ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
             if(generatedKeys.next()){
                 generatedId = generatedKeys.getInt(1);
             }
-        }
-        return generatedId;
+        }*/
+        return rows;
     }
     //update
     //delete

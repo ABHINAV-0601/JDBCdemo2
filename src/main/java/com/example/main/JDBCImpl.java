@@ -1,5 +1,7 @@
 package com.example.main;
+import com.example.dao.AddressDAO;
 import com.example.dao.StandardDAO;
+import com.example.dao.StudentDAO;
 import com.example.data.Address;
 import com.example.data.Standard;
 import com.example.data.Student;
@@ -19,14 +21,15 @@ public class JDBCImpl {
         System.out.println("enter email");
         scanner.nextLine();
         String email = scanner.nextLine();
-        System.out.println("enter class to enroll");
+        System.out.println("enter class to     enroll");
         String standard = scanner.nextLine();
         System.out.println("enter section");
         String section = scanner.nextLine();
-        System.out.println("enter address");
+        System.out.println("Address Details");
         System.out.println("enter flat no");
-        String flatNo = scanner.nextLine();
+        int flatNo = scanner.nextInt();
         System.out.println("enter building name");
+        scanner.nextLine();
         String buildingName = scanner.nextLine();
         System.out.println("enter street");
         String street = scanner.nextLine();
@@ -51,15 +54,25 @@ public class JDBCImpl {
         //call insert method to insert the value into student table
 
         StandardDAO standardDAO = new StandardDAO();
-        int generatedKey = 0;
+        AddressDAO addressDAO = new AddressDAO();
+        StudentDAO studentDAO = new StudentDAO();
+        int rows = 0;
+        int classrows = 0;
+        int studentrows = 0;
+        //int generatedKey = 0;
         try {
-            generatedKey = standardDAO.insertIntoStandard(s1);
-
+            //generatedKey = standardDAO.insertIntoStandard(s1);
+            rows = addressDAO.insertIntoAddress(a1);
+            classrows = standardDAO.insertIntoStandard(s1);
+            studentrows = studentDAO.insertIntoStudent(student);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println("generatedKey =" + generatedKey);
+        //System.out.println("generatedKey =" + generatedKey);
+        System.out.println("rows affected = " + rows);
+        System.out.println("Class rows affected = " + classrows);
+        System.out.println("Student rows affected = " + studentrows);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.data;
 
 public class Address {
-    private String flatNo;
+    private int flatNo;
 
     private String buildingName;
 
@@ -16,7 +16,7 @@ public class Address {
     public Address() {
     }
 
-    public Address(String flatNo, String buildingName, String street, String city, String state, int pinCode, String country) {
+    public Address(int flatNo, String buildingName, String street, String city, String state, int pinCode, String country) {
         this.flatNo = flatNo;
         this.buildingName = buildingName;
         this.street = street;
@@ -26,11 +26,11 @@ public class Address {
         this.country = country;
     }
 
-    public String getFlatNo() {
+    public int getFlatNo() {
         return flatNo;
     }
 
-    public void setFlatNo(String flatNo) {
+    public void setFlatNo(int flatNo) {
         this.flatNo = flatNo;
     }
 
